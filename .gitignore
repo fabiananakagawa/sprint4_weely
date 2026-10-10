@@ -19,3 +19,6 @@ relatorios/*.html
 
 # Sistema
 .DS_Store
+
+# Saídas do modo --simular do pipeline (não são resultados)
+eval/resultados_simulacao/
