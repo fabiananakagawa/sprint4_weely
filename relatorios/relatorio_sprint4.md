@@ -370,9 +370,9 @@ Turma 1CCPX.
 
 | Nome | RM | Tarefa principal na Sprint 04 |
 |---|---|---|
-| André Santos de Azevedo | RM572236 | [PREENCHER] |
-| Bruno Menezes Monegatto | RM570311 | [PREENCHER] |
-| Fabiana Yumi Rodrigues Nakagawa | RM571249 | [PREENCHER] |
-| Iago Neiva Gorrão | RM570234 | [PREENCHER] |
-| João Pedro Amorim Albuquerque | RM573342 | [PREENCHER] |
-| Kayky Araujo Silva | RM569535 | [PREENCHER] |
+| André Santos de Azevedo | RM572236 | Versões do agente: réplica da Sprint 2 e integração de V1, V2 e V3 ao pipeline (`eval/versoes.py`) |
+| Bruno Menezes Monegatto | RM570311 | Execução e análise comparativa: orquestração do pipeline, execução nas 3 versões e comparação com a Sprint 3 (`eval/run_eval.py`) |
+| Fabiana Yumi Rodrigues Nakagawa | RM571249 | Golden dataset: construção dos 46 casos, gabaritos e critérios de aceite (`eval/golden_dataset.json`) |
+| Iago Neiva Gorrão | RM570234 | LLM as a judge: rubrica, prompt do juiz e saída estruturada (`eval/juiz.py`) |
+| João Pedro Amorim Albuquerque | RM573342 | Métricas e testes: cálculo das métricas, checagens determinísticas e testes unitários (`eval/metricas.py`, `tests/test_metricas.py`) |
+| Kayky Araujo Silva | RM569535 | Relatório final e documentação: relatório, PDF, README e `integrantes.txt` |
