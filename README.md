@@ -83,7 +83,7 @@ checagens determinísticas.
 eval/
   golden_dataset.json   # 46 casos com gabarito (14 das Sprints 1–3 + 32 novos)
   versoes.py            # V1 = Sprint 2 (notebook) · V2 = Sprint 3 final · V3 = Sprint 3 gpt-5-nano
-  juiz.py               # LLM as a judge (gpt-4.1; 2º juiz gpt-5-mini para concordância)
+  juiz.py               # LLM as a judge (gpt-5-nano; 2º juiz gpt-4o-mini para concordância)
   metricas.py           # correção, escopo, fidelidade, recusa correta, falsa recusa, nota final
   run_eval.py           # orquestra geração → julgamento → tabela comparativa
   simulacao.py          # agente/juiz falsos para testar o pipeline sem API

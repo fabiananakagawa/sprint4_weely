@@ -7,7 +7,7 @@ cada resposta com LLM as a judge + checagens determinísticas e grava:
   eval/resultados/resumo.json / resumo.md   tabela comparativa por versão e por métrica
 
 Uso:
-  python eval/run_eval.py                          # V1, V2 e V3 com juiz gpt-4.1 e 2º juiz gpt-5-mini
+  python eval/run_eval.py                          # V1, V2 e V3 com juiz gpt-5-nano e 2º juiz gpt-4o-mini
   python eval/run_eval.py --versoes V1 V2          # só algumas versões
   python eval/run_eval.py --rejulgar               # reaproveita respostas gravadas, só rejulga
   python eval/run_eval.py --casos F1 S4 M3         # subconjunto de casos
@@ -211,8 +211,8 @@ async def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--versoes", nargs="+", default=["V1", "V2", "V3"])
     parser.add_argument("--casos", nargs="+", default=None)
-    parser.add_argument("--juiz", default="gpt-4.1")
-    parser.add_argument("--juiz2", default="gpt-5-mini", help="segundo juiz para medir concordância ('' desliga)")
+    parser.add_argument("--juiz", default="gpt-5-nano")
+    parser.add_argument("--juiz2", default="gpt-4o-mini", help="segundo juiz para medir concordância ('' desliga)")
     parser.add_argument("--concorrencia", type=int, default=4)
     parser.add_argument("--rejulgar", action="store_true", help="reaproveita respostas gravadas")
     parser.add_argument("--offline-sprint3", action="store_true")

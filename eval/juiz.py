@@ -3,9 +3,10 @@
 O juiz recebe a base de contexto da ChargeGrid, o caso do golden dataset (categoria,
 comportamento esperado e gabarito), o histórico da conversa e a resposta do agente, e
 devolve notas de 1 a 5 com rubrica explícita (estilo G-Eval) mais três vereditos
-binários. O juiz principal é um modelo diferente e mais capaz que o avaliado
-(gpt-4.1 x gpt-4o-mini), para reduzir o viés de autopreferência; um segundo juiz
-opcional mede a concordância entre juízes.
+binários. O projeto da chave só tem acesso a gpt-4o-mini e gpt-5-nano, então os dois
+julgam todas as versões: o juiz principal (gpt-5-nano, modelo de raciocínio) é de outra
+família que o modelo de V1/V2 (gpt-4o-mini), e o segundo juiz (gpt-4o-mini) permite
+medir a concordância e o viés de autopreferência cruzado.
 """
 
 from pydantic import BaseModel, Field
