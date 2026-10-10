@@ -69,3 +69,41 @@ As credenciais ficam apenas no `.env` (ignorado pelo Git).
   injection e mensagens fora de escopo antes do modelo principal;
 - `ModelSettings` — experimentação com modelos e parâmetros (temperature);
 - `output_type` (Pydantic) — saídas estruturadas do classificador e dos juízes.
+
+---
+
+# Sprint 04 — Pipeline de avaliação sistemática
+
+A checagem manual da Sprint 3 foi substituída por um pipeline reprodutível:
+um golden dataset de 46 casos é executado contra 3 versões do agente, e cada
+resposta é julgada por um LLM juiz (rubrica de 1 a 5, saída estruturada) e por
+checagens determinísticas.
+
+```
+eval/
+  golden_dataset.json   # 46 casos com gabarito (14 das Sprints 1–3 + 32 novos)
+  versoes.py            # V1 = Sprint 2 (notebook) · V2 = Sprint 3 final · V3 = Sprint 3 gpt-5-nano
+  juiz.py               # LLM as a judge (gpt-4.1; 2º juiz gpt-5-mini para concordância)
+  metricas.py           # correção, escopo, fidelidade, recusa correta, falsa recusa, nota final
+  run_eval.py           # orquestra geração → julgamento → tabela comparativa
+  simulacao.py          # agente/juiz falsos para testar o pipeline sem API
+tests/test_metricas.py  # testes unitários das métricas e do dataset
+relatorios/relatorio_sprint4.md / .pdf   # relatório final da Sprint 04
+```
+
+## Como executar
+
+```bash
+pip install -r requirements.txt
+python -m unittest tests.test_metricas -v   # sem API
+python eval/run_eval.py --simular           # testa o pipeline sem API (notas fictícias)
+python eval/run_eval.py --offline-sprint3   # checagens determinísticas nas respostas da Sprint 3
+
+python eval/run_eval.py --casos F1 S1       # teste rápido com API
+python eval/run_eval.py                     # avaliação completa (V1, V2, V3)
+python eval/run_eval.py --rejulgar          # rejulga as respostas já gravadas
+```
+
+Saídas em `eval/resultados/`: `respostas_<V>.json`, `avaliacao_<V>.json`,
+`resumo.json` e `resumo.md` (tabela por versão e por métrica + comparação com a
+Sprint 3).
